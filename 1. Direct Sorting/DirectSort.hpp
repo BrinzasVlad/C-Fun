@@ -5,26 +5,26 @@
 #include <iterator> // std::iterator_traits
 
 template <typename RandomAccessIterator, typename Compare>
-void insertionSort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+void insertionSort (const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp);
 
 template <typename RandomAccessIterator>
-void insertionSort (RandomAccessIterator first, RandomAccessIterator last) {
+void insertionSort (const RandomAccessIterator first, const RandomAccessIterator last) {
     insertionSort(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
 }
 
 template <typename RandomAccessIterator, typename Compare>
-void selectionSort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+void selectionSort (const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp);
 
 template <typename RandomAccessIterator>
-void selectionSort (RandomAccessIterator first, RandomAccessIterator last) {
+void selectionSort (const RandomAccessIterator first, const RandomAccessIterator last) {
     selectionSort(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
 }
 
 template <typename RandomAccessIterator, typename Compare>
-void bubbleSort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+void bubbleSort (const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp);
 
 template <typename RandomAccessIterator>
-void bubbleSort (RandomAccessIterator first, RandomAccessIterator last) {
+void bubbleSort (const RandomAccessIterator first, const RandomAccessIterator last) {
     bubbleSort(first, last, std::less<typename std::iterator_traits<RandomAccessIterator>::value_type>());
 }
 

@@ -1,7 +1,7 @@
 #include <utility> // std::swap
 
 template <typename RandomAccessIterator, typename Compare>
-void insertionSort (RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
+void insertionSort (const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp) {
 
     // Start with one element sorted
     // Insert further elements into sorted part at the start of the array
@@ -35,7 +35,7 @@ void insertionSort (RandomAccessIterator first, RandomAccessIterator last, Compa
 }
 
 template <typename RandomAccessIterator, typename Compare>
-void selectionSort(RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
+void selectionSort(const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp) {
 
     // Start with no elements sorted
     // Accumulate sorted elements at the start of the array
@@ -53,7 +53,7 @@ void selectionSort(RandomAccessIterator first, RandomAccessIterator last, Compar
 }
 
 template <typename RandomAccessIterator, typename Compare>
-void bubbleSort(RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
+void bubbleSort(const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp) {
 
     // Start with no elements sorted
     // Bubble sorted elements up to the end of the array
