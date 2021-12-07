@@ -1,5 +1,6 @@
 #include "../0. Utils/MeasurementUtils.hpp" // OperationCounter
-#include <utility> // std::swap
+#include <utility> // std::swap, std::move
+#include <iterator> // std::iterator_traits
 
 template <typename RandomAccessIterator, typename Compare>
 void insertionSort (const RandomAccessIterator first, const RandomAccessIterator last, const Compare comp, OperationCounter* count) {
@@ -30,9 +31,17 @@ void insertionSort (const RandomAccessIterator first, const RandomAccessIterator
         RandomAccessIterator targetPosition = searchHigh;
 
         // Shift sorted part to insert element
-        for (RandomAccessIterator i = firstUnsorted; i > targetPosition; i--) {
-            if (NULL != count) count->assignments += 3; // TODO: this is inefficient; we should use std::move instead of repeated swaps
-            std::swap(*i, *(i-1));
+        if (targetPosition != firstUnsorted) {
+            if (NULL != count) count->assignments++;
+            typename std::iterator_traits<RandomAccessIterator>::value_type temp = std::move(*firstUnsorted);
+
+            for (RandomAccessIterator i = firstUnsorted; i > targetPosition; i--) {
+                if (NULL != count) count->assignments++;
+                *i = std::move(*(i-1));
+            }
+
+            if (NULL != count) count->assignments++;
+            *targetPosition = std::move(temp);
         }
     }
 }
